@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if command -v php >/dev/null 2>&1; then
+  exec php "$@"
+fi
+
+if command -v docker >/dev/null 2>&1; then
+  WORKSPACE_DIR="${WORKSPACE_DIR:-$(pwd)}"
+  exec docker run --rm -v "$WORKSPACE_DIR":/workspace -w /workspace php:8.2-cli php "$@"
+fi
+
+echo "No se encontró un ejecutable de PHP ni un runtime disponible mediante Docker." >&2
+exit 127

@@ -1,0 +1,4 @@
+{
+  "php.validate.executablePath": "${workspaceFolder}/bin/php",
+  "php.debug.executablePath": "${workspaceFolder}/bin/php"
+}
